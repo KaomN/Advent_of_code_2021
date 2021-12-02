@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/02 16:27:17 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:28:10 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main(void)
 	n1cmp = 0;
 	n2cmp = 0;
 	count = 0;
+	line = NULL;
 	while (ret)
 	{
 		ret = get_next_line(fd, &line);
@@ -68,6 +69,8 @@ int main(void)
 			n1 = ft_atoi(line);
 			countn1 = 1;
 		}
+		if (line != NULL)
+			free(line);
 	}
 	printf("[%d]\n", count);
 	free(line);
