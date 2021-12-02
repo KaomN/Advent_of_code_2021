@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/02 17:09:49 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:28:00 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main(void)
 	ret = 1;
 	forward = 0;
 	depth = 0;
+	line = NULL;
 	while (ret)
 	{
 		ret = get_next_line(fd, &line);
@@ -51,6 +52,8 @@ int main(void)
 			depth += ft_atoi(tmp);
 			free(tmp);
 		}
+		if (line != NULL)
+			free(line);
 	}
 	printf("forward: [%d] depth: [%d]\n", forward, depth);
 	printf("Total: [%d]\n", forward * depth);
