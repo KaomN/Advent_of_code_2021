@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/29 13:23:54 by conguyen          #+#    #+#             */
-/*   Updated: 2021/11/27 15:04:21 by conguyen         ###   ########.fr       */
+/*   Created: 2021/10/28 17:20:39 by conguyen          #+#    #+#             */
+/*   Updated: 2021/11/27 15:02:59 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 /*
 ** DESCRIPTION
-** ft_strdup() function returns a pointer to a new string which is a duplicate
-** of the string s. Memory for the new string is obtained with malloc(3),
-** and can be freed with free(3).
+** ft_strcpy() function copies the string pointed to by src, including the
+** terminating null byte ('\0'), to the buffer pointed to by dest. The strings
+** may not overlap, and the destination string dest must be large enough to
+** receive the copy.
 */
 
-char	*ft_strdup(const char *s1)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	char	*dup;
-	size_t	len;
+	int	c;
 
-	len = ft_strlen(s1);
-	dup = (char *)malloc(sizeof(char) * len + 1);
-	if (dup == NULL)
-		return (NULL);
-	else
-		ft_strcpy(dup, s1);
-	return (dup);
+	c = 0;
+	while (src[c])
+	{
+		dest[c] = src[c];
+		c++;
+	}
+	dest[c] = '\0';
+	return (dest);
 }

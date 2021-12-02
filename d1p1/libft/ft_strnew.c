@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 17:06:13 by conguyen          #+#    #+#             */
-/*   Updated: 2021/11/27 15:03:21 by conguyen         ###   ########.fr       */
+/*   Created: 2021/11/05 14:41:04 by conguyen          #+#    #+#             */
+/*   Updated: 2021/11/27 15:10:09 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 
 /*
 ** DESCRIPTION
-** ft_strdel() function takes as a parameter the address of a string that needs
-** to be freed with free(3), then sets its pointer to NULL.
+** ft_strnew() function allocates with malloc(3) and returns a "fresh" string
+** ending with ('\0'). Each character of the string is initialized as ('\0').
 */
 
-void	ft_strdel(char **as)
+char	*ft_strnew(size_t size)
 {
-	if (as != NULL)
+	char	*str;
+
+	str = (char *)malloc(sizeof(*str) * size + 1);
+	if (str == NULL)
+		return (NULL);
+	else
 	{
-		free(*as);
-		*as = NULL;
+		ft_bzero(str, sizeof(*str) * size + 1);
+		return (str);
 	}
 }
