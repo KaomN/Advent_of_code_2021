@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/02 17:28:00 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:09:05 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int main(void)
 	}
 	printf("forward: [%d] depth: [%d]\n", forward, depth);
 	printf("Total: [%d]\n", forward * depth);
-	free(line);
+	close (fd);
 	return (0);
 }
