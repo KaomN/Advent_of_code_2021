@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/02 17:29:15 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:06:14 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int main(void)
 			free(line);
 	}
 	free(temp);
+	close (fd);
 	printf("%d\n", count);
 	return (0);
 }
