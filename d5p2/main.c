@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/06 17:43:21 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/06 21:01:59 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ int main(void)
 				for (int x1 = coords[x][0]; x1 <= coords[x][2]; x1++)
 					map[x2--][x1] += 1;
 			}
-			if(coords[x][2] == coords[x][3] && coords[x][0] > coords[x][1])
+			else if(coords[x][2] == coords[x][3] && coords[x][0] > coords[x][1])
 			{
 				x2 = coords[x][0];
 				for (int x1 = coords[x][1]; x1 <= coords[x][2]; x1++)
