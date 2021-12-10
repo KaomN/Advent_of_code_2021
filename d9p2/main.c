@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/09 17:02:38 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:16:01 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,84 +44,57 @@ void	check_array(int	arr[100][100])
 		for (int y = 0; y < 100; y++)
 		{
 			// top left corner
-			if (x == 0 && y == 0)
+			if ((x == 0 && y == 0) &&  (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y]))
 			{
-				if (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// top right corner
-			else if (x == 0 && y == 99)
+			if ((x == 0 && y == 99) && (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x + 1][y]))
 			{
-				if (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x + 1][y])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// bottom left corner
-			else if (y == 0 && x == 99)
+			if ((y == 0 && x == 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y + 1]))
 			{
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y + 1])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// bottom right corner
-			else if (x == 99 && y == 99)
+			if (((x == 99 && y == 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y - 1])))
 			{
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y - 1])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// first row
-			else if (x == 0)
+			if ((x == 0 && y > 0 && y < 99) && (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1]))
 			{
-				if (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// first column
-			else if (y == 0)
+			if ((y == 0 && x > 0 && x < 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1]))
 			{
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// last row
-			else if (x == 99)
+			if ((x == 99 && y > 0 && y < 99) && (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x - 1][y]))
 			{
-				if (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x - 1][y])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 			// last column
-			else if (y == 99)
+			if ((y == 99 && x > 0 && x < 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1]))
 			{
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
-			else
+			if ((y > 0 && y < 99 && x > 0 && x < 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x][y - 1]))
 			{
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x][y - 1])
-				{
-					calculate_basin(arr, x, y, c);
-					c++;
-				}
+				calculate_basin(arr, x, y, c);
+				c++;
 			}
 		}
 	}

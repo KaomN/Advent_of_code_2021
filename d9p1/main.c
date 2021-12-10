@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/09 14:29:20 by conguyen         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:12:07 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,32 @@ int	check_array(int	arr[100][100])
 		for (int y = 0; y < 100; y++)
 		{
 			// top left corner
-			if (x == 0 && y == 0)
-				if (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y])
-					count += arr[x][y] + 1;
+			if ((x == 0 && y == 0) && (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y]))
+				count += arr[x][y] + 1;
 			// top right corner
-			else if (x == 0 && y == 9)
-				if (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x + 1][y])
-					count += arr[x][y] + 1;
+			if ((x == 0 && y == 99) && (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x + 1][y]))
+				count += arr[x][y] + 1;
 			// bottom left corner
-			else if (y == 0 && x == 4)
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y + 1])
-					count += arr[x][y] + 1;
+			if ((y == 0 && x == 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y + 1]))
+				count += arr[x][y] + 1;
 			// bottom right corner
-			else if (x == 4 && y == 9)
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y - 1])
-					count += arr[x][y] + 1;
+			if ((x == 99 && y == 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x][y - 1]))
+				count += arr[x][y] + 1;
 			// first row
-			else if (x == 0)
-				if (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1])
-					count += arr[x][y] + 1;
+			if ((x == 0 && y > 0 && y < 99) && (arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1]))
+				count += arr[x][y] + 1;
 			// first column
-			else if (y == 0)
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1])
-					count += arr[x][y] + 1;
+			if ((y == 0 && x > 0 && x < 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1]))
+				count += arr[x][y] + 1;
 			// last row
-			else if (x == 4)
-				if (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x - 1][y])
-					count += arr[x][y] + 1;
+			if ((x == 99 && y > 0 && y < 99) && (arr[x][y] < arr[x][y - 1] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x - 1][y]))
+				count += arr[x][y] + 1;
 			// last column
-			else if (y == 9)
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1])
-					count += arr[x][y] + 1;
-			else
-				if (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x][y - 1])
-					count += arr[x][y] + 1;
+			if ((y == 99 && x > 0 && x < 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y - 1]))
+				count += arr[x][y] + 1;
+			// inside
+			if ((y > 0 && y < 99 && x > 0 && x < 99) && (arr[x][y] < arr[x - 1][y] && arr[x][y] < arr[x + 1][y] && arr[x][y] < arr[x][y + 1] && arr[x][y] < arr[x][y - 1]))
+				count += arr[x][y] + 1;
 		}
 	}
 	return (count);
