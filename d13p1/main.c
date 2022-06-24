@@ -6,7 +6,7 @@
 /*   By: conguyen <conguyen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:27:58 by conguyen          #+#    #+#             */
-/*   Updated: 2021/12/14 08:45:35 by conguyen         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:49:48 by conguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,21 @@ void	x_fold(int fold)
 {
 	int	starty;
 
-	for (int x = 0; x < max_row + 1; x++)
+	for (int x = 0; x < max_row; x++)
 	{
-		starty = fold - 1;
-		for (int y = fold + 1; y < max_col + 1; y++)
+		starty = max_col;
+		for (int y = 0; y < fold; y++)
 		{
-			if (paper[x][y] == '#')
-				paper[x][starty] = '#';
+			if (paper[x][starty] == '#')
+			{
+				paper[x][y] = '#';
+				printf("found at pos: %d,%d\n", y, x);
+			}
+
 			starty--;
 		}
 	}
-	max_col = fold - 1;
+	max_col = fold;
 }
 
 void	y_fold(int fold)
@@ -108,9 +112,10 @@ int main(void)
 	while (ret)
 	{
 		ret = get_next_line(fd, &line);
-		paper[ft_atoi(line + get_x_coords(line))][ft_atoi(line)] = '#';
+		paper[ft_atoi(line)][ft_atoi(line + get_x_coords(line))] = '#';
 		if(max_col < ft_atoi(line))
 			max_col = ft_atoi(line);
+		//printf("%d,%d\n", ft_atoi(line), ft_atoi(line + get_x_coords(line)));
 		// printf("coords:[%d],[%d]\n", ft_atoi(line + get_x_coords(line)), ft_atoi(line));
 		if (line != NULL)
 			free(line);
@@ -118,6 +123,7 @@ int main(void)
 	close(fd);
 	printf("maxcol:%d\n", max_col);
 	printf("maxrow:%d\n", max_row);
+	printf("count: [%d]\n", get_count());
 	// for (int x = 0; x < max_col + 1; x++)
 	// {
 	// 	for (int y = 0; y < max_row + 1; y++)
